@@ -1,21 +1,24 @@
 package com.santiagolizardo.tetriskit;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import com.santiagolizardo.tetriskit.logic.Engine;
-import com.santiagolizardo.tetriskit.panels.CreditsPanel;
 import com.santiagolizardo.tetriskit.panels.GameSetupPanel;
 import com.santiagolizardo.tetriskit.panels.MainPanel;
 import com.santiagolizardo.tetriskit.panels.ScoresPanel;
 import com.santiagolizardo.tetriskit.resources.SoundLoader;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Application main entry point.
@@ -23,8 +26,11 @@ import com.santiagolizardo.tetriskit.resources.SoundLoader;
 @SuppressWarnings("serial")
 public class MainGUI extends JFrame implements ActionListener {
 
+	private static final Logger logger = Logger.getLogger(MainGUI.class.getName());
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				MainGUI tetris = new MainGUI();
 				tetris.setVisible(true);
@@ -50,9 +56,6 @@ public class MainGUI extends JFrame implements ActionListener {
 		ScoresPanel scoresPanel = new ScoresPanel();
 		scoresPanel.setActionListener(this);
 
-		CreditsPanel creditsPanel = new CreditsPanel();
-		creditsPanel.setActionListener(this);
-
 		setupPanel = new GameSetupPanel();
 		setupPanel.getButtonStart().addActionListener(this);
 		setupPanel.getButtonBack().addActionListener(this);
@@ -60,14 +63,9 @@ public class MainGUI extends JFrame implements ActionListener {
 		cardLayout = new CardLayout();
 
 		container = (JPanel) getContentPane();
-		container.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-		container.setOpaque(true);
-		container.setBackground(new Color(0xFF2A00));
-
 		container.setLayout(cardLayout);
 		container.add(mainPanel, "main");
 		container.add(scoresPanel, "scores");
-		container.add(creditsPanel, "credits");
 		container.add(setupPanel, "setup");
 
 		pack();
@@ -77,13 +75,14 @@ public class MainGUI extends JFrame implements ActionListener {
 		setLocationRelativeTo(null);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == setupPanel.getButtonStart()) {
-			short boardWidth = setupPanel.getAltoTablero();
-			short boardHeight = setupPanel.getAnchoTablero();
+			short boardWidth = setupPanel.getBoardHeight();
+			short boardHeight = setupPanel.getBoardWidth();
 			Engine engine = new Engine(boardHeight, boardWidth);
 			engine.setVisible(true);
-			engine.start();
+			engine.turnOn();
 		} else {
 			String action = event.getActionCommand();
 			if ("SHOW_MAIN".equals(event.getActionCommand())) {
@@ -96,11 +95,7 @@ public class MainGUI extends JFrame implements ActionListener {
 				setTitle("View scores - Tetris kit");
 				cardLayout.show(container, "scores");
 			} else if ("btnCredits".equals(action)) {
-				setTitle("Credits - Tetris kit");
-				cardLayout.show(container, "credits");
-			} else if ("btnGamePieces".equals(action)) {
-				setTitle("Pieces - Tetris kit");
-				cardLayout.show(container, "pieces");
+				openGameUrl();
 			} else if ("btnGameOptions".equals(action)) {
 				setTitle("Game options - Tetris kit");
 				cardLayout.show(container, "preferences");
@@ -108,6 +103,16 @@ public class MainGUI extends JFrame implements ActionListener {
 				dispose();
 				System.exit(0);
 			}
+		}
+	}
+
+	private void openGameUrl() {
+		try {
+			URL url = new URL(Constants.GAME_URL);
+			Desktop desktop = Desktop.getDesktop();
+			desktop.browse(url.toURI());
+		} catch (URISyntaxException | IOException e) {
+			logger.log(Level.WARNING, e.getMessage(), e);
 		}
 	}
 }

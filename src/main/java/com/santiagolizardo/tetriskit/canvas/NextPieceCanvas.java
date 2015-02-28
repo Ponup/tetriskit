@@ -46,8 +46,9 @@ public class NextPieceCanvas extends JPanel {
 		repaint();
 	}
 
-	public void paint(Graphics g) {
-		super.paint(g);
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
 
 		g.drawImage(image, 0, 0, this);
 	}

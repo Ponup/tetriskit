@@ -73,8 +73,10 @@ public class BoardCanvas extends JPanel {
 		repaint();
 	}
 
-	public void paint(Graphics g) {
-		// Double buffering
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+
 		g.drawImage(image, 0, 0, this);
 	}
 

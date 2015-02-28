@@ -51,17 +51,17 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 
 		Short[] widthArray = new Short[30];
 		for (int i = 0; i < widthArray.length; i++) {
-			widthArray[i] = new Short((short) (14 + i));
+			widthArray[i] = (short) (14 + i);
 		}
 		Short[] heightArray = new Short[30];
 		for (int i = 0; i < heightArray.length; i++) {
-			heightArray[i] = new Short((short) (14 + i));
+			heightArray[i] = (short) (14 + i);
 		}
 
-		dropdownWidth = new JComboBox<Short>(widthArray);
-		dropdownWidth.setSelectedItem(new Short(config.defaultBoardWidth));
-		dropdownHeight = new JComboBox<Short>(heightArray);
-		dropdownHeight.setSelectedItem(new Short(config.defaultBoardHeight));
+		dropdownWidth = new JComboBox<>(widthArray);
+		dropdownWidth.setSelectedItem(config.defaultBoardWidth);
+		dropdownHeight = new JComboBox<>(heightArray);
+		dropdownHeight.setSelectedItem(config.defaultBoardHeight);
 
 		cbEnableSounds = new JCheckBox("Enable sounds");
 		cbEnableOddFigures = new JCheckBox("Enable odd figures");
@@ -150,14 +150,15 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 		this.buttonStart = buttonStart;
 	}
 
-	public short getAltoTablero() {
-		return ((Short) dropdownHeight.getSelectedItem()).shortValue();
+	public short getBoardHeight() {
+		return ((Short)dropdownHeight.getSelectedItem());
 	}
 
-	public short getAnchoTablero() {
-		return ((Short) dropdownWidth.getSelectedItem()).shortValue();
+	public short getBoardWidth() {
+		return ((Short)dropdownWidth.getSelectedItem());
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent event) {
 		Config config = Config.getInstance();
 
@@ -175,15 +176,19 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 		}
 	}
 
+	@Override
 	public void mouseEntered(MouseEvent event) {
 	}
 
+	@Override
 	public void mouseExited(MouseEvent event) {
 	}
 
+	@Override
 	public void mousePressed(MouseEvent event) {
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent event) {
 	}
 }

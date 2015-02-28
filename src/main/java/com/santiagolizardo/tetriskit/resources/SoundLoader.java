@@ -4,18 +4,23 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Preloads sounds so that the application does not have to load them
  * repeatedly.
  */
 public class SoundLoader {
+	
+	private static final Logger logger = Logger.getLogger(SoundLoader.class.getName());
 
-	private static Hashtable<Sounds, AudioClip> sounds;
+	private static HashMap<Sounds, AudioClip> sounds;
 
 	public static void loadSounds() {
-		sounds = new Hashtable<Sounds, AudioClip>();
+		sounds = new HashMap<Sounds, AudioClip>();
 		try {
 			sounds.put(Sounds.LineCompleted,
 					Applet.newAudioClip(buildURL("sounds/line.au")));
@@ -24,7 +29,7 @@ public class SoundLoader {
 			sounds.put(Sounds.GameOver,
 					Applet.newAudioClip(buildURL("sounds/gameover.au")));
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.WARNING, e.getMessage(), e);
 		}
 	}
 

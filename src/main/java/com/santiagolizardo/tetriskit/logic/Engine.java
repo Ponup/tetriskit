@@ -17,6 +17,9 @@ import com.santiagolizardo.tetriskit.canvas.NextPieceCanvas;
 import com.santiagolizardo.tetriskit.panels.StatusPanel;
 import com.santiagolizardo.tetriskit.resources.Sounds;
 import com.santiagolizardo.tetriskit.resources.SoundLoader;
+import java.awt.HeadlessException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Most of the game logic is managed by this class.
@@ -24,6 +27,8 @@ import com.santiagolizardo.tetriskit.resources.SoundLoader;
 @SuppressWarnings("serial")
 public class Engine extends JDialog implements Runnable, KeyListener {
 
+	private final static Logger logger = Logger.getLogger(Engine.class.getName());
+	
 	private Thread thread;
 
 	public BoardCanvas board;
@@ -44,20 +49,26 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 				* Constants.BLOCK_SIZE + 40);
 
 		setResizable(false);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
 		gameState = new GameState(boardWidth, boardHeight);
 
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
+				if( gameState.getState().equals(GameStates.StateFinished ) ) {
+					dispose();
+					return;
+				}
 				gameState.setState(GameStates.StatePaused);
-				int option = JOptionPane.showConfirmDialog(Engine.this,
-						"Are you sure you want to stop the game now?");
+				int option = JOptionPane.showOptionDialog(Engine.this,
+						"Are you sure you want to stop the game now?", "Confirmation", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, null, null, null);
 				if (option == JOptionPane.YES_OPTION) {
 					gameState.setState(GameStates.StateStopped);
-					super.windowClosing(e);
+					dispose();
 				} else {
-					gameState.setState(GameStates.StatePlaying);
+					turnOn();
 				}
 			}
 		});
@@ -102,17 +113,16 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 		container.add(statusPanel);
 	}
 
-	public void start() {
-		if (thread == null) {
-			thread = new Thread(this);
-			thread.setPriority(Thread.MAX_PRIORITY);
-			thread.setName(getClass().getName());
-			thread.start();
+	public void turnOn() {
+		gameState.setState(GameStates.StatePlaying);
 
-			gameState.setState(GameStates.StatePlaying);
-		}
+		thread = new Thread(this);
+		thread.setPriority(Thread.MAX_PRIORITY);
+		thread.setName(getClass().getName());
+		thread.start();
 	}
 
+	@Override
 	public void run() {
 		try {
 			while (gameState.getState().equals(GameStates.StatePlaying)) {
@@ -139,8 +149,8 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 				JOptionPane.showMessageDialog(this, "Game over.", "Tetris",
 						JOptionPane.ERROR_MESSAGE);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (InterruptedException | HeadlessException e) {
+			logger.log(Level.WARNING, e.getMessage(), e);
 		}
 	}
 
@@ -152,6 +162,7 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 		statusPanel.refresh(gameState);
 	}
 
+	@Override
 	public void keyPressed(KeyEvent event) {
 		switch (event.getKeyCode()) {
 		case KeyEvent.VK_SPACE:
@@ -172,9 +183,11 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 		}
 	}
 
+	@Override
 	public void keyReleased(KeyEvent event) {
 	}
 
+	@Override
 	public void keyTyped(KeyEvent event) {
 	}
 }
