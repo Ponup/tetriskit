@@ -30,10 +30,7 @@ public class StatusPanel extends JPanel {
 		numLinesLabel = new JLabel("0");
 		secondsLabel = new JLabel("0");
 
-		int width = 80;
-		int height = 220;
-
-		Dimension dimension = new Dimension(width, height);
+		Dimension dimension = new Dimension(80, 220);
 
 		setMinimumSize(dimension);
 		setPreferredSize(dimension);

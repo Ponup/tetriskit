@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import com.santiagolizardo.tetriskit.logic.Engine;
+import com.santiagolizardo.tetriskit.logic.GameState;
 import com.santiagolizardo.tetriskit.panels.GameSetupPanel;
 import com.santiagolizardo.tetriskit.panels.MainPanel;
 import com.santiagolizardo.tetriskit.panels.ScoresPanel;
@@ -38,6 +39,8 @@ public class MainGUI extends JFrame implements ActionListener {
 		});
 	}
 
+	private MainPanel mainPanel;
+	private ScoresPanel scoresPanel;
 	private GameSetupPanel setupPanel;
 
 	private CardLayout cardLayout;
@@ -50,12 +53,12 @@ public class MainGUI extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 
-		MainPanel mainPanel = new MainPanel();
-		mainPanel.setActionListener(this);
-
-		ScoresPanel scoresPanel = new ScoresPanel();
+		scoresPanel = new ScoresPanel();
 		scoresPanel.setActionListener(this);
 
+		mainPanel = new MainPanel();
+		mainPanel.setActionListener(this);
+		
 		setupPanel = new GameSetupPanel();
 		setupPanel.getButtonStart().addActionListener(this);
 		setupPanel.getButtonBack().addActionListener(this);
@@ -80,24 +83,29 @@ public class MainGUI extends JFrame implements ActionListener {
 		if (event.getSource() == setupPanel.getButtonStart()) {
 			short boardWidth = setupPanel.getBoardHeight();
 			short boardHeight = setupPanel.getBoardWidth();
-			Engine engine = new Engine(boardHeight, boardWidth);
+			
+			GameState gameState = new GameState(boardWidth, boardHeight);
+			gameState.setPlayerName(mainPanel.getPlayerNameTextfield().getText());
+			
+			Engine engine = new Engine(gameState);
 			engine.setVisible(true);
 			engine.turnOn();
 		} else {
 			String action = event.getActionCommand();
 			if ("SHOW_MAIN".equals(event.getActionCommand())) {
-				setTitle("Tetris kit");
+				setTitle("Tetriskit");
 				cardLayout.show(container, "main");
 			} else if ("btnNewGame".equals(action)) {
-				setTitle("Game setup - Tetris kit");
+				setTitle("Game setup - Tetriskit");
 				cardLayout.show(container, "setup");
 			} else if ("btnViewScores".equals(action)) {
-				setTitle("View scores - Tetris kit");
+				setTitle("View scores - Tetriskit");
+				scoresPanel.refreshScores();
 				cardLayout.show(container, "scores");
 			} else if ("btnCredits".equals(action)) {
 				openGameUrl();
 			} else if ("btnGameOptions".equals(action)) {
-				setTitle("Game options - Tetris kit");
+				setTitle("Game options - Tetriskit");
 				cardLayout.show(container, "preferences");
 			} else if ("btnQuit".equals(action)) {
 				dispose();

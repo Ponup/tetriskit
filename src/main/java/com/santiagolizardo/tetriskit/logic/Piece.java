@@ -24,7 +24,7 @@ public class Piece {
 		this.shape = shape;
 
 		this.engine = engine;
-		this.boardCanvas = engine.board;
+		this.boardCanvas = engine.getBoard();
 	}
 
 	public void setShape(short[][] shape) {

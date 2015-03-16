@@ -5,7 +5,6 @@ import java.applet.AudioClip;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +19,7 @@ public class SoundLoader {
 	private static HashMap<Sounds, AudioClip> sounds;
 
 	public static void loadSounds() {
-		sounds = new HashMap<Sounds, AudioClip>();
+		sounds = new HashMap<>();
 		try {
 			sounds.put(Sounds.LineCompleted,
 					Applet.newAudioClip(buildURL("sounds/line.au")));

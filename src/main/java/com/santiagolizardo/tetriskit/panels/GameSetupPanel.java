@@ -38,8 +38,8 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 	private JPanel ctrlBackground;
 	private JPanel ctrlPieces;
 
-	private JButton buttonBack;
-	private JButton buttonStart;
+	private JButton backButton;
+	private JButton startButton;
 
 	public GameSetupPanel() {
 		initComponents();
@@ -76,11 +76,11 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 		ctrlPieces.setSize(80, 15);
 		ctrlPieces.setBackground(config.defaultPieceColor);
 
-		buttonBack = new JButton("Back",
+		backButton = new JButton("Back",
 				new ImageLoader().load("arrow_left.png"));
-		buttonBack.setActionCommand("SHOW_MAIN");
+		backButton.setActionCommand("SHOW_MAIN");
 
-		buttonStart = new JButton("Start!");
+		startButton = new JButton("Start!");
 	}
 
 	private void placeComponents() {
@@ -106,11 +106,11 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 		spring.putConstraint(NORTH, _fgColor, 5, SOUTH, ctrlBackground);
 		spring.putConstraint(NORTH, ctrlPieces, 5, SOUTH, _fgColor);
 
-		spring.putConstraint(SOUTH, buttonBack, -5, SOUTH, this);
-		spring.putConstraint(SOUTH, buttonStart, -5, SOUTH, this);
+		spring.putConstraint(SOUTH, backButton, -5, SOUTH, this);
+		spring.putConstraint(SOUTH, startButton, -5, SOUTH, this);
 
-		spring.putConstraint(EAST, buttonStart, -5, EAST, this);
-		spring.putConstraint(EAST, buttonBack, -5, WEST, buttonStart);
+		spring.putConstraint(EAST, startButton, -5, EAST, this);
+		spring.putConstraint(EAST, backButton, -5, WEST, startButton);
 
 		Constraints cons = spring.getConstraints(this);
 		cons.setWidth(spring.getConstraint(EAST, _ancho));
@@ -130,24 +130,24 @@ public class GameSetupPanel extends BasePanel implements MouseListener {
 		add(_fgColor);
 		add(ctrlPieces);
 
-		add(buttonBack);
-		add(buttonStart);
+		add(backButton);
+		add(startButton);
 	}
 
 	public JButton getButtonBack() {
-		return buttonBack;
+		return backButton;
 	}
 
 	public void setButtonBack(JButton buttonBack) {
-		this.buttonBack = buttonBack;
+		this.backButton = buttonBack;
 	}
 
 	public JButton getButtonStart() {
-		return buttonStart;
+		return startButton;
 	}
 
 	public void setButtonStart(JButton buttonStart) {
-		this.buttonStart = buttonStart;
+		this.startButton = buttonStart;
 	}
 
 	public short getBoardHeight() {

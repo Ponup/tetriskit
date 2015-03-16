@@ -5,6 +5,8 @@ package com.santiagolizardo.tetriskit.logic;
  */
 public class GameState {
 
+	private String playerName;
+	
 	private GameStates state;
 
 	private short level;
@@ -121,5 +123,13 @@ public class GameState {
 
 	public void setNumLines(int numLines) {
 		this.numLines = numLines;
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 }
