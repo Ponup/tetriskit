@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.logic;
+package com.ponup.tetriskit.logic;
 
 import com.ponup.api.Score;
 import com.ponup.api.ScoreService;
@@ -12,13 +12,13 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.tetriskit.Config;
-import com.santiagolizardo.tetriskit.Constants;
-import com.santiagolizardo.tetriskit.canvas.BoardCanvas;
-import com.santiagolizardo.tetriskit.canvas.NextPieceCanvas;
-import com.santiagolizardo.tetriskit.panels.StatusPanel;
-import com.santiagolizardo.tetriskit.resources.Sounds;
-import com.santiagolizardo.tetriskit.resources.SoundLoader;
+import com.ponup.tetriskit.Config;
+import com.ponup.tetriskit.Constants;
+import com.ponup.tetriskit.canvas.BoardCanvas;
+import com.ponup.tetriskit.canvas.NextPieceCanvas;
+import com.ponup.tetriskit.panels.StatusPanel;
+import com.ponup.tetriskit.resources.Sounds;
+import com.ponup.tetriskit.resources.SoundLoader;
 import java.awt.HeadlessException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

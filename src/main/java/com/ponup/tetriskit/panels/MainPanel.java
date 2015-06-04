@@ -1,6 +1,6 @@
-package com.santiagolizardo.tetriskit.panels;
+package com.ponup.tetriskit.panels;
 
-import com.santiagolizardo.tetriskit.resources.EnhancedTextField;
+import com.ponup.tetriskit.resources.EnhancedTextField;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;

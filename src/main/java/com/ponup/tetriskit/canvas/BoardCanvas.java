@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.canvas;
+package com.ponup.tetriskit.canvas;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,14 +7,14 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import com.santiagolizardo.tetriskit.Config;
-import com.santiagolizardo.tetriskit.Constants;
-import com.santiagolizardo.tetriskit.logic.Engine;
-import com.santiagolizardo.tetriskit.logic.GameState;
-import com.santiagolizardo.tetriskit.logic.Piece;
-import com.santiagolizardo.tetriskit.logic.PiecesUtil;
-import com.santiagolizardo.tetriskit.resources.Sounds;
-import com.santiagolizardo.tetriskit.resources.SoundLoader;
+import com.ponup.tetriskit.Config;
+import com.ponup.tetriskit.Constants;
+import com.ponup.tetriskit.logic.Engine;
+import com.ponup.tetriskit.logic.GameState;
+import com.ponup.tetriskit.logic.Piece;
+import com.ponup.tetriskit.logic.PiecesUtil;
+import com.ponup.tetriskit.resources.Sounds;
+import com.ponup.tetriskit.resources.SoundLoader;
 
 /**
  * UI widget for the game board.

@@ -1,7 +1,7 @@
-package com.santiagolizardo.tetriskit.panels;
+package com.ponup.tetriskit.panels;
 
-import com.santiagolizardo.tetriskit.MainGUI;
-import com.santiagolizardo.tetriskit.resources.ImageLoader;
+import com.ponup.tetriskit.MainGUI;
+import com.ponup.tetriskit.resources.ImageLoader;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;

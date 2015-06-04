@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.resources;
+package com.ponup.tetriskit.resources;
 
 import java.applet.Applet;
 import java.applet.AudioClip;

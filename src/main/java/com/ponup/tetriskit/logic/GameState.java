@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.logic;
+package com.ponup.tetriskit.logic;
 
 /**
  * This class remembers the status of a game in a certain time.

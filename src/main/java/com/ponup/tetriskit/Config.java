@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit;
+package com.ponup.tetriskit;
 
 import java.awt.Color;
 

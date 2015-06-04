@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.panels;
+package com.ponup.tetriskit.panels;
 
 import com.ponup.api.ScoreService;
 import com.ponup.api.Score;
@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.SpringLayout;
 import javax.swing.table.DefaultTableModel;
 
-import com.santiagolizardo.tetriskit.resources.ImageLoader;
+import com.ponup.tetriskit.resources.ImageLoader;
 
 public class ScoresPanel extends BasePanel {
 

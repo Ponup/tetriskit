@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.santiagolizardo.tetriskit</groupId>
+    <groupId>com.ponup.tetriskit</groupId>
     <artifactId>TetrisKit</artifactId>
     <version>1.2.1</version>
     <packaging>jar</packaging>
@@ -29,7 +29,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.santiagolizardo.tetriskit.MainGUI</mainClass>
+                            <mainClass>com.ponup.tetriskit.MainGUI</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

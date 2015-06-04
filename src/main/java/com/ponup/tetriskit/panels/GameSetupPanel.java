@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.panels;
+package com.ponup.tetriskit.panels;
 
 import static javax.swing.SpringLayout.EAST;
 import static javax.swing.SpringLayout.NORTH;
@@ -18,8 +18,8 @@ import javax.swing.Spring;
 import javax.swing.SpringLayout;
 import javax.swing.SpringLayout.Constraints;
 
-import com.santiagolizardo.tetriskit.Config;
-import com.santiagolizardo.tetriskit.resources.ImageLoader;
+import com.ponup.tetriskit.Config;
+import com.ponup.tetriskit.resources.ImageLoader;
 
 /**
  * Configuration UI panel.

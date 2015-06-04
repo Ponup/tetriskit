@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.logic;
+package com.ponup.tetriskit.logic;
 
 public enum GameStates {
 	StateStopped, StatePlaying, StatePaused, StateFinished

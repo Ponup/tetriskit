@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit;
+package com.ponup.tetriskit;
 
 /**
  * Application constants.
@@ -6,7 +6,7 @@ package com.santiagolizardo.tetriskit;
 public class Constants {
 
 	public static final String GAME_TITLE = "TetrisKit";
-	public static final String GAME_VERSION = "v1.2";
+	public static final String GAME_VERSION = "v1.2.1";
 	public static final String GAME_URL = "https://github.com/Ponup/tetriskit";
 
 	public final static short BLOCK_SIZE = 15;

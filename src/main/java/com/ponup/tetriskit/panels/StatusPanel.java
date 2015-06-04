@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.panels;
+package com.ponup.tetriskit.panels;
 
 import static javax.swing.SpringLayout.NORTH;
 import static javax.swing.SpringLayout.SOUTH;
@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-import com.santiagolizardo.tetriskit.logic.GameState;
+import com.ponup.tetriskit.logic.GameState;
 
 /**
  * The UI panel where the score and time is displayed.

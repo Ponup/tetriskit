@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.resources;
+package com.ponup.tetriskit.resources;
 
 public enum Sounds {
 	LineCompleted, CollisionDetected, GameOver,

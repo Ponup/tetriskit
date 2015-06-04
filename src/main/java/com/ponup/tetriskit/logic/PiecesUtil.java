@@ -1,10 +1,10 @@
-package com.santiagolizardo.tetriskit.logic;
+package com.ponup.tetriskit.logic;
 
 import java.awt.Graphics;
 import java.util.Random;
 
-import com.santiagolizardo.tetriskit.Config;
-import com.santiagolizardo.tetriskit.Constants;
+import com.ponup.tetriskit.Config;
+import com.ponup.tetriskit.Constants;
 
 /**
  * Utility methods for block handling.

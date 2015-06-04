@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.resources;
+package com.ponup.tetriskit.resources;
 
 import java.awt.Image;
 import java.io.IOException;

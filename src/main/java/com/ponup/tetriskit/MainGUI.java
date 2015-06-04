@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit;
+package com.ponup.tetriskit;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -8,12 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import com.santiagolizardo.tetriskit.logic.Engine;
-import com.santiagolizardo.tetriskit.logic.GameState;
-import com.santiagolizardo.tetriskit.panels.GameSetupPanel;
-import com.santiagolizardo.tetriskit.panels.MainPanel;
-import com.santiagolizardo.tetriskit.panels.ScoresPanel;
-import com.santiagolizardo.tetriskit.resources.SoundLoader;
+import com.ponup.tetriskit.logic.Engine;
+import com.ponup.tetriskit.logic.GameState;
+import com.ponup.tetriskit.panels.GameSetupPanel;
+import com.ponup.tetriskit.panels.MainPanel;
+import com.ponup.tetriskit.panels.ScoresPanel;
+import com.ponup.tetriskit.resources.SoundLoader;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;

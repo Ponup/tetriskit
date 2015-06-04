@@ -1,9 +1,9 @@
-package com.santiagolizardo.tetriskit.logic;
+package com.ponup.tetriskit.logic;
 
 import java.awt.Graphics;
 
-import com.santiagolizardo.tetriskit.Constants;
-import com.santiagolizardo.tetriskit.canvas.BoardCanvas;
+import com.ponup.tetriskit.Constants;
+import com.ponup.tetriskit.canvas.BoardCanvas;
 
 /**
  * This class represents a block falling or laying.

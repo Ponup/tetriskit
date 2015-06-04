@@ -1,4 +1,4 @@
-package com.santiagolizardo.tetriskit.canvas;
+package com.ponup.tetriskit.canvas;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import com.santiagolizardo.tetriskit.logic.GameState;
-import com.santiagolizardo.tetriskit.logic.PiecesUtil;
+import com.ponup.tetriskit.logic.GameState;
+import com.ponup.tetriskit.logic.PiecesUtil;
 
 /**
  * Small UI widget for the next piece panel.
