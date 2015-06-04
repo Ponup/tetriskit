@@ -9,7 +9,7 @@ public class GameState {
 	
 	private GameStates state;
 
-	private short level;
+	private int level;
 
 	private int points;
 	private int time;
@@ -53,11 +53,11 @@ public class GameState {
 		this.state = state;
 	}
 
-	public short getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
-	public void setLevel(short level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
 

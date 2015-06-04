@@ -1,7 +1,7 @@
 package com.santiagolizardo.tetriskit.logic;
 
-import com.ponup.services.Score;
-import com.ponup.services.ScoreService;
+import com.ponup.api.Score;
+import com.ponup.api.ScoreService;
 import java.awt.Container;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -218,6 +218,7 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 			JOptionPane.ERROR_MESSAGE);
 		Score score = new Score();
 		score.setGameName("tetriskit");
+                score.setGameLevelNumber(gameState.getLevel());
 		score.setPlayerName(gameState.getPlayerName());
 		score.setValue(gameState.getPoints());
 

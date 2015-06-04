@@ -1,7 +1,7 @@
 package com.santiagolizardo.tetriskit.panels;
 
-import com.ponup.services.ScoreService;
-import com.ponup.services.Score;
+import com.ponup.api.ScoreService;
+import com.ponup.api.Score;
 import java.awt.event.ActionListener;
 
 import java.util.List;
