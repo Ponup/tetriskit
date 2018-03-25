@@ -4,3 +4,6 @@ target
 .classpath
 *.exe
 nbactions.xml
+.idea
+*.iml
+.DS_Store

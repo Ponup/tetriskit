@@ -32,10 +32,14 @@ public class BoardCanvas extends JPanel {
 	private int width;
 	private int height;
 
-	public BoardCanvas(Engine engine) {
+	private SoundLoader soundLoader;
+
+	public BoardCanvas(Engine engine, final SoundLoader soundLoader) {
 		super();
 
 		this.engine = engine;
+		this.soundLoader = soundLoader;
+
 		this.gameState = engine.gameState;
 
 		width = gameState.getBoardWidth() * Constants.BLOCK_SIZE;
@@ -123,7 +127,7 @@ public class BoardCanvas extends JPanel {
 			}
 			gameState.setPoints(gameState.getNumLines() * scorePerLine);
 
-			SoundLoader.playSound(Sounds.LineCompleted);
+			soundLoader.playSound(Sounds.LineCompleted);
 		}
 	}
 
@@ -166,8 +170,8 @@ public class BoardCanvas extends JPanel {
 		}
 	}
 
-	private static boolean collisionDetected() {
-		SoundLoader.playSound(Sounds.CollisionDetected);
+	private boolean collisionDetected() {
+		soundLoader.playSound(Sounds.CollisionDetected);
 		return true;
 	}
 }

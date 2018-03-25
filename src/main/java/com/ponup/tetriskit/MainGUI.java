@@ -30,13 +30,10 @@ public class MainGUI extends JFrame implements ActionListener {
 	private static final Logger logger = Logger.getLogger(MainGUI.class.getName());
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				MainGUI tetris = new MainGUI();
-				tetris.setVisible(true);
-			}
-		});
+		SwingUtilities.invokeLater(() -> {
+            MainGUI tetris = new MainGUI();
+            tetris.setVisible(true);
+        });
 	}
 
 	private MainPanel mainPanel;
@@ -45,6 +42,8 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	private CardLayout cardLayout;
 	private JPanel container;
+
+	private SoundLoader soundLoader;
 
 	public MainGUI() {
 		super();
@@ -73,7 +72,8 @@ public class MainGUI extends JFrame implements ActionListener {
 
 		pack();
 
-		SoundLoader.loadSounds();
+		soundLoader = new SoundLoader();
+		soundLoader.loadSounds();
 
 		setLocationRelativeTo(null);
 	}
@@ -87,7 +87,7 @@ public class MainGUI extends JFrame implements ActionListener {
 			GameState gameState = new GameState(boardWidth, boardHeight);
 			gameState.setPlayerName(mainPanel.getPlayerNameTextfield().getText());
 			
-			Engine engine = new Engine(gameState);
+			Engine engine = new Engine(gameState, soundLoader);
 			engine.setVisible(true);
 			engine.turnOn();
 		} else {

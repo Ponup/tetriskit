@@ -42,10 +42,13 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 
 	public GameState gameState;
 
-	public Engine(final GameState gameState) {
+	private SoundLoader soundLoader;
+
+	public Engine(final GameState gameState, SoundLoader soundLoader) {
 		super();
 
 		this.gameState = gameState;
+		this.soundLoader = soundLoader;
 
 		setTitle("Playing Tetris kit!");
 		// setModal(true);
@@ -76,7 +79,7 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 		});
 		addKeyListener(this);
 
-		board = new BoardCanvas(this);
+		board = new BoardCanvas(this, soundLoader);
 		nextPieceCanvas = new NextPieceCanvas(gameState);
 		statusPanel = new StatusPanel();
 
@@ -186,7 +189,7 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 	}
 
 	private Piece dropPiece() {
-		SoundLoader.playSound(Sounds.LineCompleted);
+		soundLoader.playSound(Sounds.LineCompleted);
 
 		short[][] figure = PiecesUtil.randomPiece();
 		Piece piece = new Piece(this, figure);
@@ -213,7 +216,7 @@ public class Engine extends JDialog implements Runnable, KeyListener {
 	}
 
 	private void processGameOver() {
-		SoundLoader.playSound(Sounds.GameOver);
+		soundLoader.playSound(Sounds.GameOver);
 		JOptionPane.showMessageDialog(this, "The game is over.", Constants.GAME_TITLE,
 			JOptionPane.ERROR_MESSAGE);
 		Score score = new Score();

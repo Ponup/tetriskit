@@ -1,44 +1,53 @@
 package com.ponup.tetriskit.resources;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.MalformedURLException;
+import javax.sound.sampled.*;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Preloads sounds so that the application does not have to load them
  * repeatedly.
+ *
+ * @todo close audioclips after use
  */
 public class SoundLoader {
 	
 	private static final Logger logger = Logger.getLogger(SoundLoader.class.getName());
 
-	private static HashMap<Sounds, AudioClip> sounds;
+	private Map<Sounds, Clip> sounds;
 
-	public static void loadSounds() {
+	public void loadSounds() {
 		sounds = new HashMap<>();
 		try {
-			sounds.put(Sounds.LineCompleted,
-					Applet.newAudioClip(buildURL("sounds/line.au")));
+			sounds.put(Sounds.LineCompleted, loadAudioFile("sounds/line.wav"));
 			sounds.put(Sounds.CollisionDetected,
-					Applet.newAudioClip(buildURL("sounds/collision.au")));
+					loadAudioFile("sounds/collision.wav"));
 			sounds.put(Sounds.GameOver,
-					Applet.newAudioClip(buildURL("sounds/gameover.au")));
+					loadAudioFile("sounds/gameover.wav"));
 		} catch (Exception e) {
 			logger.log(Level.WARNING, e.getMessage(), e);
 		}
 	}
 
-	public static void playSound(Sounds sound) {
+	private Clip loadAudioFile(final String name) throws Exception {
+	    URL audioFile = buildURL(name);
+        AudioInputStream audioIs = AudioSystem.getAudioInputStream(audioFile);
+        DataLine.Info info = new DataLine.Info(Clip.class, audioIs.getFormat());
+        Clip audioClip = (Clip)AudioSystem.getLine(info);
+        audioClip.open(audioIs);
+        return audioClip;
+	}
+
+	public void playSound(final Sounds sound) {
 		if (sounds.containsKey(sound)) {
-			sounds.get(sound).play();
+			sounds.get(sound).start();
 		}
 	}
 
-	private static URL buildURL(String file) throws MalformedURLException {
+	private URL buildURL(final String file) {
 		return SoundLoader.class.getResource(file);
 	}
 }
