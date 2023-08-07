@@ -22,7 +22,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <version>3.6.0</version>
+                <version>3.11.0</version>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
